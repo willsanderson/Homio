@@ -1,8 +1,7 @@
 ## **🏠 Welcome to Homio**
 
-Homio is a clean, minimal, and fully YAML-based dashboard for Home Assistant that i build for a bit of fun. It's still work in progress but wanted to share it with you after receiving many requests for it. It’s built with tablets in mind — perfect for a wall-mounted screen — but it also works well on mobile thanks to its responsive layout. Everything is done in YAML to give you full control and make it easier to share, reuse, and tweak. I recommend to use the visual studio code editor plugin in home assistant to make coding that little bit easier.
+Homio is a clean, minimal, mobile-friendly and fully YAML-based dashboard for Home Assistant. It's still work in progress but wanted to share it with you after receiving many requests for it. It’s built with desktop/tablet/mobile thanks to its responsive layout. Everything is done in YAML to give you full control and make it easier to share, reuse, and tweak. I recommend to use the visual studio code editor plugin in home assistant to make coding that little bit easier.
 
-I plan on looking to integrate/create other cards into the homio design in the very near future so feel free to reach out if you have any requests. 
 
 Desktop/Tablet view
 
@@ -264,7 +263,7 @@ Use the layout in your dashboard YAML like this:
 
 The homio_enitiy_layout is designed to make placing entity cards in a consistent, responsive layout easy. It handles spacing, responsive column counts, and layout switching for mobile views.
 
-You don’t need to touch this file — just include it where you want a grid of homio_entity cards (or other custom buttons) to appear. However if you want vertical scroll on mobile for your entities make sure to uncomment the media query section.
+You don’t need to touch this file — just include it where you want a grid of homio_entity cards (or other custom buttons) to appear.
 
 **Example**
 
@@ -337,10 +336,6 @@ The key features of this are,
       variables:
         icon: motion
 ```
-
-### **homio_navigation**
-
-This file builds the Homio Navigation Bar, automatically adapting to desktop and mobile devices. It includes the logo, navigation links, and current time display — all styled to match the Homio theme. You don’t need to touch this file. It includes the actual navigation list of items which is held in another yaml include file which will be outlined in the docs.
 
 **Example code**
 
@@ -593,37 +588,6 @@ homio_menu_icon:
       }
 ```
 
-### **homio_mobile_logo**
-
-This is the logo that will appear when the screen size is under 1249px, the main logo is part of the navigation that will be hidden unless toggles on so this replaces that until the navigation is opened when it will then dissapear.
-
-**Example**
-```
-homio_mobile_logo:
-  name: Homio.
-  tap_action:
-    action: navigate
-    navigation_path: /dashboard-homioy/home
-  styles:
-    name:
-      - color: var(--primary-text-color)
-      - letter-spacing: 2px
-      - font-size: 18px
-      - font-weight: 700
-      - text-transform: uppercase
-      - justify-self: start
-    card:
-      - background: transparent
-      - pointer-events: all
-      - display: |
-          [[[
-            if (states["input_boolean.homio_mobile_navigation"].state === "on") {
-              return "none";
-            } else {
-              return "block";
-            }
-          ]]]
-```
 
 ### **homio_nav_button**
 
@@ -770,7 +734,7 @@ my-slider-v2 must be installed via HACS or manually, and the resource must be in
 <img width="260" alt="Screenshot 2025-06-12 at 11 15 25" src="https://github.com/user-attachments/assets/39a8330b-ef0e-423a-8d72-a21e482c8a57" />
 
 
-The homio thermostat template brings smart control to your heating setup. It combines HVAC mode switching, target temperature setting, and a clean display layout using only button-card and layout-card components.
+The homio thermostat template brings smart control to your cooling setup. It combines HVAC mode switching, target temperature setting, and a clean display layout using only button-card and layout-card components.
 
 Make sure to use the template named homio_thermostat for the custom button card,
 
@@ -871,6 +835,6 @@ views:
 ```
 
 ## We made it to the end together
-I really hope you enjoy using homio, i've enjoyed building it and im still so overwhelmed with all the positive feedback and uptake its recieved. Thanks for all the kind messages i have recieved as well. If you want to buy me a coffee to say thanks and keep me awake feel free.
+If you want to buy the original developer of Homio a coffee to say thanks and keep them awake feel free.
 
 <a href="https://www.buymeacoffee.com/iamtherufus" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
